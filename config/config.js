@@ -4,13 +4,17 @@ const { REDIS_CONF } = require('./db_config'),
 module.exports = {
 	qiniu: {
 		keys: {
-			ak: 'gCyds_nz_v-QhVIDt6LtIIjo1jVoxJnXkoCFDUrt',
-		  sk: 'm7bfJT6AbUU9jbTiYJFcpiLx4H4wcmQccFzVIz2r'
+			// ak: 'gCyds_nz_v-QhVIDt6LtIIjo1jVoxJnXkoCFDUrt',
+			ak: '30RtC2yzfh2CmfZwMqRT1oKSnysh5ENcAFdmWl3n',
+		  // sk: 'm7bfJT6AbUU9jbTiYJFcpiLx4H4wcmQccFzVIz2r'
+		  sk: 'aH4rf5TFJdYmIITOkf9EhLo0oDcp4a-cVHdtUa7w'
 		},
     bucket: {
     	tximg: {
-    		bucket_name: 'txclass-image',
-		    domain: 'http://tximg.jsplusplus.com/'
+    		// bucket_name: 'txclass-image',
+    		bucket_name: 'kahoul-blog-img',
+				// domain: 'http://tximg.jsplusplus.com/'
+				domain:'http://img.kahoul.top/'
     	}
     }
 	},
