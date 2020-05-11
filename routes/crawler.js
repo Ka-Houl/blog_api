@@ -2,7 +2,7 @@ const router = require('koa-router')(),
       crawlerController = require('../controllers/Crawler'),
       loginCheck = require('../middlewares/loginCheck');
 
-router.prefix('/crawler');
+router.prefix('/crawler');   //加上默认前缀
 
 router.get('/crawl_slider_data', loginCheck, crawlerController.crawlSliderData);
 router.get('/crawl_agency_info', loginCheck, crawlerController.crawlAgencyInfo);

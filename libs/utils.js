@@ -1,94 +1,85 @@
 const cp = require('child_process'),
-      nanoId = require('nanoid'),
-      Qiniu = require('qiniu'),
-      crypto = require('crypto'),
+    nanoId = require('nanoid'),
+    Qiniu = require('qiniu'),
+    crypto = require('crypto'),
+    { resolve } = require('path'),
+    { qiniu, cryptoSecret } = require('../config/config');
 
-      { resolve } = require('path'),
-      { qiniu, cryptoSecret } = require('../config/config');
-
-function startProcess (options) {
-  const script = resolve(__dirname, '../crawlers/' + options.file),
+function startProcess(options) {
+    const script = resolve(__dirname, '../crawlers/' + options.file),
+        //执行子进程
         child = cp.fork(script, []);
 
-  let invoked = false;
+    let invoked = false;
 
-  child.on('message', (data) => {
-    options.message(data);
-  });
+    child.on('message', data => {
+        options.message(data);
+    });
 
-  child.on('exit', (code) => {
-    if (invoked) {
-      return;
-    }
+    child.on('exit', code => {
+        if (invoked) {
+            return;
+        }
 
-    invoked = true;
-    options.exit(code);
-  });
+        invoked = true;
+        options.exit(code);
+    });
 
-  child.on('error', (err) => {
-    if (invoked) {
-      return;
-    }
+    child.on('error', err => {
+        if (invoked) {
+            return;
+        }
 
-    invoked = true;
-    options.error(err);
-  });
+        invoked = true;
+        options.error(err);
+    });
 }
-
-function qiniuUpload (options) {
-  const mac = new Qiniu.auth.digest.Mac(qiniu.keys.ak, qiniu.keys.sk),
+//七牛图片上传配置
+function qiniuUpload(options) {
+    const mac = new Qiniu.auth.digest.Mac(qiniu.keys.ak, qiniu.keys.sk),
         conf = new Qiniu.conf.Config(),
         client = new Qiniu.rs.BucketManager(mac, conf),
         key = nanoId() + options.ext;
 
-  return new Promise((resolve, reject) => {
-    client.fetch(options.url, options.bucket, key, (error, ret, info) => {
-      if (error) {
-        reject(error);
-      } else {
-        if (info.statusCode === 200) {
-          resolve({ key });
-        } else {
-          reject(info);
-        }
-      }
+    return new Promise((resolve, reject) => {
+        // 使用七牛终端 将url上传到服务器中
+        client.fetch(options.url, options.bucket, key, (error, ret, info) => {
+            if (error) {
+                reject(error);
+            } else {
+                if (info.statusCode === 200) {
+                    resolve({ key });
+                } else {
+                    reject(info);
+                }
+            }
+        });
     });
-  });
 }
 
-function makeCrypto (str) {
-  const _md5 = crypto.createHash('md5'),
+function makeCrypto(str) {
+    const _md5 = crypto.createHash('md5'),
         content = `str=${str}&secret=${cryptoSecret}`;
 
-  return _md5.update(content).digest('hex');
+    return _md5.update(content).digest('hex');
 }
 
-function trimSpace (str) {
-  return str.replace(/\s+/g, '');
+function trimSpace(str) {
+    return str.replace(/\s+/g, '');
 }
 
-function returnInfo (errorInfo, data) {
-  if (data) {
-    errorInfo.data = data;
-  }
+function returnInfo(errorInfo, data) {
+    if (data) {
+        errorInfo.data = data;
+    }
 
-  return errorInfo;
+    return errorInfo;
 }
 
 module.exports = {
-	startProcess,
-  qiniuUpload,
-  makeCrypto,
-  trimSpace,
-  returnInfo
-}
-
-
-
-
-
-
-
-
-
-
+    startProcess,
+    qiniuUpload,
+    makeCrypto,
+    trimSpace,
+    returnInfo,
+};
