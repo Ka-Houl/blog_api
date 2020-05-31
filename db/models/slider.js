@@ -5,13 +5,13 @@ const Slider = seq.define('slider', {
   cid: {
     comment: 'course ID',
     type: INT,
-    allowNull: false,
-    unique: true
+    allowNull: false,   //是否允许空
+    unique: true    //是否唯一
   },
   href: {
   	comment: 'course detail page link',
   	type: STRING,
-  	allowNull: false
+  	allowNull: false    //是否允许空
   },
   imgUrl: {
   	comment: 'course image url',
