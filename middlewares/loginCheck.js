@@ -2,6 +2,7 @@ const { returnInfo } = require('../libs/utils'),
       { LOGIN } = require('../config/error_config');
 
 module.exports = async (ctx, next) => {
+  console.log('ctx, next',ctx, next)
   if (ctx.session.userInfo) {
   	await next();
   	return;

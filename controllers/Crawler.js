@@ -15,6 +15,7 @@ const { startProcess, qiniuUpload } = require('../libs/utils'),
 class Crawler {
   async crawlSliderData (ctx, next) {
     const retData = await new Promise((resolve, reject) => {
+      console.log(1111)
       startProcess({
         file: 'slider',
         async message(data) {

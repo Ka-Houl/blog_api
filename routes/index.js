@@ -2,7 +2,13 @@ const router = require('koa-router')(),
     indexController = require('../controllers/Index'),
     loginCheck = require('../middlewares/loginCheck');
 
+router.get('/json', async (ctx, next) => {
+    ctx.body = {
+        title: 'koa2 json',
+    };
+});
 const pt = require('puppeteer');
+
 router.get('/get_courses', loginCheck, indexController.getCourses);
 router.get('/get_recom_courses', loginCheck, indexController.getRecomCourses);
 router.get('/get_sliders', loginCheck, indexController.getSliders);
