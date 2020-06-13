@@ -16,6 +16,7 @@ const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 
 const { sessionInfo, cookieInfo, redisInfo, corsOrigin } = require('./config/config');
+// const { redisGet, redisSet } = require('./libs/redisClient');
 // error handler
 onerror(app)
 

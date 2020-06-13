@@ -1,4 +1,4 @@
-const red = require('redis_connect');
+const red = require('../db/connections/redis_connect');
 
 //封装导出redis的读取与设置
 
@@ -26,7 +26,7 @@ function redisGet (key) {
 
       try {
       	resolve(JSON.parse(value));
-      } catch () {
+      } catch (err) {
       	resolve(value);
       }
     });

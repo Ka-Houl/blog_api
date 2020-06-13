@@ -8,9 +8,19 @@ const { getCourseData, changeField, changeCourseStatus } = require('../services/
     { returnInfo } = require('../libs/utils'),
     { API } = require('../config/error_config');
 
+const { redisGet, redisSet } = require('../libs/redisClient');
+
 class Index {
     async index(ctx, next) {
         console.log('11111111111');
+
+        // 设置新的redis值
+        redisSet('b11', 41);
+        redisSet('jsonB', { a: 1, b: 2 });
+        redisGet('jsonB').then(res => {
+            console.log(res);  //在终端中输出
+        });
+
         const sess = ctx.session; //获取到session
         if (!sess.uid) {
             sess.uid = 1;
@@ -19,15 +29,12 @@ class Index {
             sess.gender = 'male';
         }
 
+        //在页面中渲染session信息
         ctx.body = {
             session: sess,
         };
 
         // await ctx.render('index2')  //渲染idnex.ejs
-
-        ctx.body = {
-            title: 'Hello Koa 2!index2',
-        };
     }
     async getCourses(ctx, next) {
         // const sess = ctx.session  获取到session

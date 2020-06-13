@@ -10,9 +10,9 @@ class Admin {
     const result = await createAdminAccount(adminAccount);
 
     if (result) {
-    	console.log(0);
+    	console.log(0,'success');
     } else {
-    	console.log(1);
+    	console.log(1,'err');
     }
   }
 
