@@ -11,6 +11,7 @@ module.exports = {
 				idle: 10000  //超时时间
 			}
 		},
+		//通过环境变量分别管理线上和生产环境的数据库配置密码
 		conf: ['txclass', 'root', isPrd ? 'axy123114' : '12345678']
 	},
 	REDIS_CONF: ['6379', '127.0.0.1']

@@ -20,7 +20,13 @@ router.get('/crawl_student', loginCheck, crawlerController.crawlStudent);
 router.get('/crawl_course_tab', loginCheck, crawlerController.crawlCourseTab);
 router.get('/crawl_course_data', loginCheck, crawlerController.crawlCourseData);
 router.get('/crawl_aboutus', loginCheck, crawlerController.crawlAboutus);
-router.get('/json', async (ctx, next) => {
+router.get('/json2', async (ctx, next) => {
+    console.log(333454)
+
+    ctx.body = {
+        title: 'koa2 json2',
+    };
+});router.get('/json', async (ctx, next) => {
     console.log(33333)
 
     ctx.body = {

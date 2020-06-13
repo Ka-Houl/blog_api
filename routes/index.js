@@ -2,12 +2,16 @@ const router = require('koa-router')(),
     indexController = require('../controllers/Index'),
     loginCheck = require('../middlewares/loginCheck');
 
+const pt = require('puppeteer');
+
+//loginCheck参数会做登录校验
+router.get('/', indexController.index);
+
 router.get('/json', async (ctx, next) => {
     ctx.body = {
-        title: 'koa2 json',
+        title: 'koa112 json',
     };
 });
-const pt = require('puppeteer');
 
 router.get('/get_courses', loginCheck, indexController.getCourses);
 router.get('/get_recom_courses', loginCheck, indexController.getRecomCourses);

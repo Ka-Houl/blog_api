@@ -32,9 +32,9 @@ module.exports = {
     prefix: 'txclass.sess'
 	},
 	cookieInfo: {
-		path: '/',
-		httpOnly: true, 
-		maxAge: 24 * 60 * 60 * 1000 // cookie 过期时间
+		path: '/',   //cookie作用到全局
+		httpOnly: true,    //不允许修改cookie 
+		maxAge: 24 * 60 * 60 * 1000 // cookie 过期时间  ms
 	},
 	redisInfo: {
 		all: `${REDIS_CONF[1]}:${REDIS_CONF[0]}`
@@ -44,7 +44,7 @@ module.exports = {
 		username: 'admin',
 		password: 'admin'
 	},
-	corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3000'
+	corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3002'
 }
 
 

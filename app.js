@@ -5,6 +5,8 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+
+//引入redis相关依赖
 const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
 const cors = require('koa2-cors');
@@ -33,11 +35,14 @@ app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
 app.use(views(__dirname + '/views', {
-  extension: 'ejs'
+  // extension: 'pug'
+  extension: 'ejs'   //安装ejs后改用这个
 }))
 
-app.keys = sessionInfo.keys;
+app.keys = sessionInfo.keys;   //加密cookie的key
 
+
+//使用session中间件
 app.use(session({
   key: sessionInfo.name, // cookie name
   prefix: sessionInfo.prefix,  //redis key前缀
@@ -53,7 +58,7 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
-// routes
+// routes   //注册路由
 app.use(crawlerRouter.routes(), crawlerRouter.allowedMethods())
 app.use(indexRouter.routes(), indexRouter.allowedMethods())
 app.use(adminRouter.routes(), adminRouter.allowedMethods())

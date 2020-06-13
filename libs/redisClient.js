@@ -1,5 +1,7 @@
 const red = require('redis_connect');
 
+//封装导出redis的读取与设置
+
 function redisSet (key, value, timeout = 60 * 60) {
   if (typeof(value === 'object')) {
   	value = JSON.stringify(value);
