@@ -1,7 +1,7 @@
 const cp = require('child_process'),
     nanoId = require('nanoid'),
     Qiniu = require('qiniu'),
-    crypto = require('crypto'),
+    crypto = require('crypto'),   //直接在node模块获取cryto  无需安装新的依赖
     { resolve } = require('path'),
     { qiniu, cryptoSecret } = require('../config/config');
 
@@ -58,10 +58,10 @@ function qiniuUpload(options) {
 }
 
 function makeCrypto(str) {
-    const _md5 = crypto.createHash('md5'),
+    const _md5 = crypto.createHash('md5'),   //用md5的方式创建哈希值
         content = `str=${str}&secret=${cryptoSecret}`;
 
-    return _md5.update(content).digest('hex');
+    return _md5.update(content).digest('hex');    //返回hex   16进制md5密码
 }
 
 function trimSpace(str) {

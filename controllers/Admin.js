@@ -5,7 +5,8 @@ const { adminAccount } = require('../config/config'),
 
 class Admin {
   async addAdminAccount (ctx, next) {
-    adminAccount.password = makeCrypto(adminAccount.password);
+    adminAccount.password = makeCrypto(adminAccount.password);  //加密一下
+    // adminAccount.password = (adminAccount.password);
 
     const result = await createAdminAccount(adminAccount);
 
