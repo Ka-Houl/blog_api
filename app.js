@@ -29,7 +29,7 @@ app.use(cors({
     // return 'http://localhost:3001';
     return corsOrigin;
   },
-  credentials: true
+  credentials: true   //后端允许设置cookie
 }));
 
 // middlewares

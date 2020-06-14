@@ -29,7 +29,7 @@ class Admin {
   //登录接口
   async loginAction (ctx, next) {
     const { username, password } = ctx.request.body;
-
+    console.log(username, password)
     if (!username || !password) {
       ctx.body = returnInfo(LOGIN.INVALID_OPERATION);
       return;
@@ -47,11 +47,12 @@ class Admin {
 
     const userInfo = {
       username: trimSpace(username),
-      password: makeCrypto(trimSpace(password))
+      password: makeCrypto(trimSpace(password)),
+      // password: (trimSpace(password))
     };
 
     const result = await login(userInfo);
-
+console.log(result,'21212121','请求的password',password,userInfo)
     if (result === 10003) {
       ctx.body = returnInfo(LOGIN.USERNAME_NOT_EXIST);
       return;

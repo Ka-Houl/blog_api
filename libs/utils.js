@@ -64,6 +64,7 @@ function makeCrypto(str) {
     return _md5.update(content).digest('hex');    //返回hex   16进制md5密码
 }
 
+/**去除空格 */
 function trimSpace(str) {
     return str.replace(/\s+/g, '');
 }

@@ -29,7 +29,7 @@ module.exports = {
 	sessionInfo: {
     keys: ['a1!s2@d3#f4_&g5h6'],
     name: 'txclass.sid',
-    prefix: 'txclass.sess'
+    prefix: 'txclass.sess'  //session前缀
 	},
 	cookieInfo: {
 		path: '/',   //cookie作用到全局
@@ -44,7 +44,7 @@ module.exports = {
 		username: 'admin',
 		password: 'admin'
 	},
-	corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3000'
+	corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3000',    //浏览器的ip，不是后端ip
 }
 
 

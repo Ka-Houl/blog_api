@@ -1,5 +1,6 @@
 module.exports = {
 	LOGIN: {
+    //非法用户名长度
     INVALID_USERNAME_LENGTH: {
     	error_code: 10001,
     	error_msg: 'Invalid username length.'
@@ -8,10 +9,12 @@ module.exports = {
     	error_code: 10002,
     	error_msg: 'Invalid password length.'
     },
+    //用户名不存在
     USERNAME_NOT_EXIST: {
     	error_code: 10003,
     	error_msg: 'Username is not exist in database.'
     },
+    //密码错误
     PASSWORD_ERROR: {
     	error_code: 10004,
     	error_msg: 'Password doesn\'t matched with the username.'

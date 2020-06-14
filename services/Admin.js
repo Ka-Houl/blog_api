@@ -20,6 +20,7 @@ class AdminService {
   async login (userInfo) {
     const { username, password } = userInfo;
 
+    //查询是否存在这个username
     const usernameExist = await AdminModel.findOne({
       where: { username }
     });
@@ -29,7 +30,7 @@ class AdminService {
     }
 
     const dbPassword = usernameExist.get('password');
-
+console.log(dbPassword,password)
     if (password !== dbPassword) {
       return 10004;
     }
