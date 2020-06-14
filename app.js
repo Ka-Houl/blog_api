@@ -9,6 +9,8 @@ const logger = require('koa-logger')
 //引入redis相关依赖
 const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
+
+//设置跨域限制
 const cors = require('koa2-cors');
 
 const crawlerRouter = require('./routes/crawler');
@@ -20,8 +22,11 @@ const { sessionInfo, cookieInfo, redisInfo, corsOrigin } = require('./config/con
 // error handler
 onerror(app)
 
+
+//设置跨域
 app.use(cors({
   origin: function (ctx) {
+    // return 'http://localhost:3001';
     return corsOrigin;
   },
   credentials: true

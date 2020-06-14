@@ -44,7 +44,7 @@ module.exports = {
 		username: 'admin',
 		password: 'admin'
 	},
-	corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3002'
+	corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3000'
 }
 
 

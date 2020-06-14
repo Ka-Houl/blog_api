@@ -26,6 +26,7 @@ class Admin {
     ctx.body = returnInfo(LOGIN.NOT_LOGIN_STATUS);
   }
 
+  //登录接口
   async loginAction (ctx, next) {
     const { username, password } = ctx.request.body;
 
