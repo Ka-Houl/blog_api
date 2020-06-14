@@ -19,6 +19,7 @@ class Crawler {
       startProcess({
         file: 'slider',
         async message(data) {
+          console.log('async message(data)',data)
           data.map(async (item) => {
             if (item.imgUrl && !item.imgKey) {
 
@@ -29,6 +30,7 @@ class Crawler {
                   ext: '.jpg'
                 });
 
+                console.log('imgData----',imgData)
                 if (imgData.key) {
                   item.imgKey = imgData.key;
                 }

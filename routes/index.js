@@ -7,9 +7,11 @@ const pt = require('puppeteer');
 //loginCheck参数会做登录校验
 router.get('/', indexController.index);
 
-router.get('/json', async (ctx, next) => {
+router.get('/json', loginCheck,async (ctx, next) => {
+    console.log('loginCheck',loginCheck)
     ctx.body = {
         title: 'koa112 json',
+        loginCheck:loginCheck
     };
 });
 

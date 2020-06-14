@@ -58,7 +58,7 @@ class Index {
 
     async getSliders(ctx, next) {
         const data = await getSliderData();
-
+// console.log('data',data)
         ctx.body = data ? returnInfo(API.RETURN_SUCCESS, data) : returnInfo(API.RETURN_FAILED);
     }
 
