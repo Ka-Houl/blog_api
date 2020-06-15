@@ -44,7 +44,7 @@ class Crawler {
                 }
 
               } catch (error) {
-                console.log(error);
+                console.log('startprocess--err',error);
               }
             }
           });
