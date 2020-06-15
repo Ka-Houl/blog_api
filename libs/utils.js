@@ -1,22 +1,27 @@
 const cp = require('child_process'),
     nanoId = require('nanoid'),
     Qiniu = require('qiniu'),
-    crypto = require('crypto'),   //直接在node模块获取cryto  无需安装新的依赖
+    crypto = require('crypto'), //直接在node模块获取cryto  无需安装新的依赖
     { resolve } = require('path'),
     { qiniu, cryptoSecret } = require('../config/config');
 
 function startProcess(options) {
     const script = resolve(__dirname, '../crawlers/' + options.file),
         //执行子进程
+
         child = cp.fork(script, []);
+        console.log('script__dirname',options.file,script)
 
     let invoked = false;
-
+    console.log('child------------', child);
     child.on('message', data => {
+        console.log('child.onMessage,----------', data);
         options.message(data);
     });
 
     child.on('exit', code => {
+        console.log('child.onExit,----------', code);
+
         if (invoked) {
             return;
         }
@@ -26,6 +31,8 @@ function startProcess(options) {
     });
 
     child.on('error', err => {
+        console.log('child.onError,----------', err);
+
         if (invoked) {
             return;
         }
@@ -58,10 +65,10 @@ function qiniuUpload(options) {
 }
 
 function makeCrypto(str) {
-    const _md5 = crypto.createHash('md5'),   //用md5的方式创建哈希值
+    const _md5 = crypto.createHash('md5'), //用md5的方式创建哈希值
         content = `str=${str}&secret=${cryptoSecret}`;
 
-    return _md5.update(content).digest('hex');    //返回hex   16进制md5密码
+    return _md5.update(content).digest('hex'); //返回hex   16进制md5密码
 }
 
 /**去除空格 */

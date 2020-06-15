@@ -55,6 +55,7 @@ class Crawler {
           console.log(code);
         },
         async error(error) {
+          console.log('startProcess---error',error)
           resolve(returnInfo(CRAWLER.CRAWL_FAILED));
         }
       });

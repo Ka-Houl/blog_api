@@ -4,6 +4,7 @@ const Crawler = require('../libs/crawler'),
 Crawler({
   url: crawler.url.main,
   callback () {
+    console.log('slider---Crawler-callback')
   	const $ = window.$,
   	      $item = $('.agency-big-banner-ul .agency-big-banner-li');
 
@@ -27,3 +28,5 @@ Crawler({
   	return data;
   }
 });
+
+// console.log(111,'1+6=',1+6)
