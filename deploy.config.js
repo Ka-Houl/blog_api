@@ -15,9 +15,10 @@ module.exports = {
 	deploy: {
 		production: {
 			user: 'root',
-			host: '47.105.106.4',
+			host: '47.92.198.10',  
 			ref: 'origin/master',
-			repo: 'https://gitee.com/jsjiajia_tishengban/jspp_api.git',
+			// repo: 'https://gitee.com/jsjiajia_tishengban/jspp_api.git',
+			repo:'https://gitee.com/Ka-houl/jspp_api.git',
 			path: '/www/jspp_api/production',
 			'pre-deploy': 'git fetch --all',
 			'post-deploy': 'npm install && npm run prd && pm2 startOrRestart deploy.config.js --env production'

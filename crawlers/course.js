@@ -17,7 +17,7 @@ Crawler({
       const dataItem = {
       	cid: $itemLk.attr('data-id'),
       	href: $itemLk.prop('href'),
-      	posterUrl: $itemLk.find('.item-img').prop('src').replace('webp', ''),
+      	posterUrl: $itemLk.find('.item-img').prop('src').replace('webp', ''),   //去除格式，避免safari浏览器查阅图片失败
       	courseName: $itemLk.find('.item-img').prop('title'),
       	price: $el.find('.item-price').text() == '免费' ? '0' : $el.find('.item-price').text().slice(1),
       	description: $el.find('.item-status-step').text(),
