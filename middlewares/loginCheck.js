@@ -3,6 +3,7 @@ const { returnInfo } = require('../libs/utils'),
 
 module.exports = async (ctx, next) => {
   // console.log('ctx, next',ctx, next)
+  //存在session信息，才next（）执行下一个中间件事件
   if (ctx.session.userInfo) {
   	await next();
   	return;

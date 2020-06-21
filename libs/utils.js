@@ -10,7 +10,7 @@ function startProcess(options) {
         //执行子进程
 
         child = cp.fork(script, []);
-        console.log('script__dirname',options.file,script)
+        console.log('script__dirname',script)
 
     let invoked = false;
     console.log('child------------', child);

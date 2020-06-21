@@ -20,6 +20,7 @@ class CourseService {
   async getCourseData () {
     return await CourseModel.findAll({
       attributes: {
+        //忽略这些键名数据，不会再返回
         exclude: ['posterUrl', 'description']
       }
     });
