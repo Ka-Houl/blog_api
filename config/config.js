@@ -44,7 +44,7 @@ module.exports = {
 		username: 'admin',
 		password: 'admin'
 	},
-	corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3004',    //浏览器的ip，不是后端ip
+	corsOrigin: isPrd ? 'http://admin.kahoul.top' : 'http://localhost:3004',    //浏览器的ip，不是后端ip
 }
 
 
