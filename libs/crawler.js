@@ -12,7 +12,6 @@ module.exports = async function(options) {
                 executablePath:
                     '/root/.chromium-browser-snapshots/linux-722234/chrome-linux/chrome',
 
-                // executablePath: 'google-chrome-unstable'
             }),
             pg = await bs.newPage(),
             url = options.url;
