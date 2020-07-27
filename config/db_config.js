@@ -12,8 +12,8 @@ module.exports = {
 			}
 		},
 		//通过环境变量分别管理线上和生产环境的数据库配置密码
-		// conf: ['txclass', 'root', isPrd ? 'axy123114' : '12345678']  //TODO:修改密码
-		conf: ['txclass', 'root', isPrd ? 'WjH*zplzo4rq' : '12345678']  //TODO:修改密码
+		conf: ['txclass', 'root', isPrd ? 'axy123114' : '12345678']  //TODO:修改密码
+		// conf: ['txclass', 'root', isPrd ? 'WjH*zplzo4rq' : '12345678']  //TODO:修改密码
 	},
 	REDIS_CONF: ['6379', '127.0.0.1']
 };
