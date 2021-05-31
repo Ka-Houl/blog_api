@@ -8,30 +8,24 @@ const { getCourseData, changeField, changeCourseStatus } = require('../services/
     { returnInfo } = require('../libs/utils'),
     { API } = require('../config/error_config');
 
-const { redisGet, redisSet } = require('../libs/redisClient');
 
 class Index {
     async index(ctx, next) {
         console.log('11111111111');
 
-        // 设置新的redis值
-        redisSet('b11', 41);
-        redisSet('jsonB', { a: 1, b: 2 });
-        redisGet('jsonB').then(res => {
-            console.log(res);  //在终端中输出
-        });
+        //在页面中渲染session信息
+        ctx.body = {
+            session: 123123123,
+        };
 
-        const sess = ctx.session; //获取到session
-        if (!sess.uid) {
-            sess.uid = 1;
-            sess.username = 'jsjiajia';
-            sess.nickname = 'js++';
-            sess.gender = 'male';
-        }
+        // await ctx.render('index2')  //渲染idnex.ejs
+    }
+    async getViewsNum(ctx, next) {
+        console.log('11111111111');
 
         //在页面中渲染session信息
         ctx.body = {
-            session: sess,
+            num: 11111,
         };
 
         // await ctx.render('index2')  //渲染idnex.ejs
@@ -58,7 +52,7 @@ class Index {
 
     async getSliders(ctx, next) {
         const data = await getSliderData();
-// console.log('data',data)
+        // console.log('data',data)
         ctx.body = data ? returnInfo(API.RETURN_SUCCESS, data) : returnInfo(API.RETURN_FAILED);
     }
 

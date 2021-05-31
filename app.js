@@ -13,9 +13,7 @@ const redisStore = require('koa-redis')
 //设置跨域限制
 const cors = require('koa2-cors');
 
-const crawlerRouter = require('./routes/crawler');
 const indexRouter = require('./routes/index');
-const adminRouter = require('./routes/admin');
 
 const { sessionInfo, cookieInfo, redisInfo, corsOrigin } = require('./config/config');
 // const { redisGet, redisSet } = require('./libs/redisClient');
@@ -65,9 +63,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes   //注册路由
-app.use(crawlerRouter.routes(), crawlerRouter.allowedMethods())
 app.use(indexRouter.routes(), indexRouter.allowedMethods())
-app.use(adminRouter.routes(), adminRouter.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
