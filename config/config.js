@@ -36,9 +36,9 @@ module.exports = {
 		httpOnly: true,    //不允许修改cookie 
 		maxAge: 24 * 60 * 60 * 1000 // cookie 过期时间  ms
 	},
-	redisInfo: {
-		all: `${REDIS_CONF[1]}:${REDIS_CONF[0]}`
-	},
+	// redisInfo: {
+	// 	all: `${REDIS_CONF[1]}:${REDIS_CONF[0]}`
+	// },
 	cryptoSecret: 'JKl&*9lj2F@#3kflsAfkDfl',
 	adminAccount: {
 		username: 'admin',

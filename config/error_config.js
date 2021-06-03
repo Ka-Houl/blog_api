@@ -41,6 +41,14 @@ module.exports = {
     }
 	},
   API: {
+    COMMON_SUCCESS: {
+      code: 0,
+      msg: 'Data is returned successfully.'
+    },
+    COMMON_FAILED: {
+      code: 10000,
+      msg: 'It is failed to return data.'
+    },
     RETURN_SUCCESS: {
       error_code: 0,
       error_msg: 'Data is returned successfully.'

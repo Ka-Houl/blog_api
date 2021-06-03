@@ -15,7 +15,7 @@ const cors = require('koa2-cors');
 
 const indexRouter = require('./routes/index');
 
-const { sessionInfo, cookieInfo, redisInfo, corsOrigin } = require('./config/config');
+const { sessionInfo, cookieInfo, corsOrigin } = require('./config/config');
 // const { redisGet, redisSet } = require('./libs/redisClient');
 // error handler
 onerror(app)
@@ -51,7 +51,7 @@ app.use(session({
   key: sessionInfo.name, // cookie name
   prefix: sessionInfo.prefix,  //redis key前缀
   cookie: cookieInfo,  
-  store: redisStore(redisInfo)
+  // store: redisStore(redisInfo)
 }));
 
 // logger

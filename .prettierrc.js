@@ -1,6 +1,6 @@
 module.exports = {
   // 缩进字节数
-  tabWidth: 4,
+  tabWidth: 2,
   // 超过最大值换行
   printWidth: 100,
   // 是否使用单引号代替双引号
