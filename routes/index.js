@@ -6,6 +6,7 @@ const router = require('koa-router')(),
 router.get('/', indexController.index)
 router.get('/getViewsNum', indexController.getViewsNum)
 router.get('/addViewsNum', indexController.addViewsNum)
+router.get('/findViewNum', indexController.findViewNum)
 
 router.get('/json', loginCheck, async (ctx, next) => {
   console.log('loginCheck', loginCheck)

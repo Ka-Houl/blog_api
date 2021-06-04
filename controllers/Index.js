@@ -1,4 +1,4 @@
-const { getView, addView } = require('../services/View'),
+const { getView, addView, findView } = require('../services/View'),
   {
     getCourseData,
     changeField,
@@ -54,8 +54,28 @@ class Index {
   }
   async addViewsNum(ctx, next) {
     console.log('11111111111')
+    debugger
     //在页面中渲染session信息
     const addViewRes = await addView({
+      ip: 11111,
+      time: new Date() * 1
+    })
+    //   {
+    //   id: 2,
+    //   time: '1214',
+    //   ip: '324324'
+    //   // updatedAt: 3,
+    //   // createdAt: 5
+    // }
+    const data = addViewRes
+    ctx.body = data
+      ? returnInfo(API.COMMON_SUCCESS, data)
+      : returnInfo(API.COMMON_FAILED)
+  }
+  async findViewNum(ctx, next) {
+    console.log('11111111111')
+    //在页面中渲染session信息
+    const addViewRes = await findView({
       ip: 11111,
       time: 123123,
       createdAt: 5,
@@ -68,9 +88,7 @@ class Index {
     //   // updatedAt: 3,
     //   // createdAt: 5
     // }
-    const data = {
-      num: addViewRes
-    }
+    const data = addViewRes
     ctx.body = data
       ? returnInfo(API.COMMON_SUCCESS, data)
       : returnInfo(API.COMMON_FAILED)
