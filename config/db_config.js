@@ -1,5 +1,6 @@
 let { isPrd } = require('./env_config')
 console.log('isPrd', isPrd)
+isPrd = isPrd
 module.exports = {
     MYSQL_CONF: {
         base: {

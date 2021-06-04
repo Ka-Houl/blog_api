@@ -53,11 +53,15 @@ class Index {
       : returnInfo(API.COMMON_FAILED)
   }
   async addViewsNum(ctx, next) {
-    console.log('11111111111')
+    console.log('ctx.request', ctx.request)
+    console.log('ctx.query', ctx.query)
+    const {
+      header: { host }
+    } = ctx.request
     debugger
     //在页面中渲染session信息
-    const addViewRes = await addView({
-      ip: 11111,
+    const data = await addView({
+      ip: host,
       time: new Date() * 1
     })
     //   {
@@ -67,12 +71,12 @@ class Index {
     //   // updatedAt: 3,
     //   // createdAt: 5
     // }
-    const data = addViewRes
     ctx.body = data
       ? returnInfo(API.COMMON_SUCCESS, data)
       : returnInfo(API.COMMON_FAILED)
   }
   async findViewNum(ctx, next) {
+    console.log(ctx)
     console.log('11111111111')
     //在页面中渲染session信息
     const addViewRes = await findView({

@@ -2,7 +2,7 @@ const seq = require('../connections/mysql_connect'),
   { STRING, INT, DECIMAL } = require('../../config/db_type_config')
 
 const View = seq.define(
-  'lr_view',
+  'view',
   {
     id: {
       comment: 'course ID',

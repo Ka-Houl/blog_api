@@ -29,7 +29,7 @@ class ViewService {
     console.log(data)
     const result = await ViewModel.create(data)
 
-    console.log('result-------', result, data)
+    // console.log('result-------', result, data)
     return result
 
     // if (result) {
@@ -41,7 +41,7 @@ class ViewService {
     // }
   }
   async findView(data) {
-    // const id = data.id
+    const id = data.id
 
     // const result = await ViewModel.findOne({
     //   where: { id }
@@ -49,7 +49,7 @@ class ViewService {
     console.log(data)
     const result = await ViewModel.findOne({
       where: {
-        id: '1111'
+        id
       }
     })
 
