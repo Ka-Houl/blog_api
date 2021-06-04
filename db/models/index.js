@@ -1,23 +1,7 @@
-const Slider = require('./slider'),
-      AgencyInfo = require('./agencyInfo'),
-      RecomCourse = require('./recomCourse'),
-      Collection = require('./collection'),
-      Teacher = require('./teacher'),
-      Student = require('./student'),
-      CourseTab = require('./courseTab'),
-      Course = require('./course'),
-      Aboutus = require('./aboutus'),
-      Admin = require('./admin');
+const View = require('./view'),
+  ArticleList = require('./articleList')
 
 module.exports = {
-	Slider,
-	AgencyInfo,
-	RecomCourse,
-	Collection,
-	Teacher,
-	Student,
-	CourseTab,
-	Course,
-	Aboutus,
-	Admin
+  View,
+  ArticleList
 }

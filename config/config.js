@@ -44,7 +44,7 @@ module.exports = {
 		username: 'admin',
 		password: 'admin'
 	},
-	corsOrigin: isPrd ? 'http://admin.kahoul.top' : 'http://localhost:9009',    // 跨域设置浏览器的ip，不是后端ip
+	corsOrigin: isPrd ? 'http://blog.kahoul.top' : 'http://localhost:9009',    // 跨域设置浏览器的ip，不是后端ip
 }
 
 
