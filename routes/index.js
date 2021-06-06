@@ -7,5 +7,6 @@ router.get('/getViewsNum', indexController.getViewsNum)
 router.get('/addViewsNum', indexController.addViewsNum)
 router.get('/findViewNum', indexController.findViewNum)
 router.get('/getArticleList', articleListController.getArticleList)
+router.post('/getArticleList', articleListController.getArticleList)
 
 module.exports = router

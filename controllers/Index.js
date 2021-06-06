@@ -26,8 +26,8 @@ class Index {
       : returnInfo(API.COMMON_FAILED)
   }
   async addViewsNum(ctx, next) {
-    console.log('ctx.request', ctx.request)
-    console.log('ctx.query', ctx.query)
+    // console.log('ctx.request', ctx.request)
+    // console.log('ctx.query', ctx.query)
     const {
       header: { host }
     } = ctx.request
