@@ -16,7 +16,7 @@ module.exports = {
 		production: {
 			user: 'root',
 			host: '47.92.198.10',
-			ref: 'origin/featute_ssr',
+			ref: 'origin/master',
 			repo:'git@github.com:Ka-Houl/blog_api.git',
 			path: '/www/blog_api/production',
 			'pre-deploy': 'git fetch --all',
