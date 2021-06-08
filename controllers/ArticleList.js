@@ -4,9 +4,10 @@ const { getArticleList } = require('../services/ArticleList'),
 
 class ArticleList {
   async getArticleList(ctx, next) {
-    console.log('11111111111')
+    console.log('getArticleList--ctx')
     const getViewRes = await getArticleList()
     const data = getViewRes
+    console.log('getViewRes', getViewRes)
     ctx.body = data
       ? returnInfo(API.COMMON_SUCCESS, data)
       : returnInfo(API.COMMON_FAILED)
