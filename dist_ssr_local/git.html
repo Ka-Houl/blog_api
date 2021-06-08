@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>git 常用指令总结</title>
+</head>
+<body><p>git 常用指令总结</p>
+<p>版本回退</p>
+<pre><code>git reset --hard [commit_ID]
+</code></pre>
+<p>强制提交</p>
+<pre><code>git push -f
+</code></pre>
+<p>查看特定文件历史更改记录</p>
+<pre><code>git log [path]
+</code></pre>
+<p>查看某次commit的的详情修改</p>
+<pre><code>git show [commit_ID]
+</code></pre>
+<p>对某个文件进行撤销git add操作</p>
+<pre><code>git reset HEAD XXX.html
+</code></pre>
+<p>提交本地tag</p>
+<pre><code>git push origin {tagID}
+</code></pre>
+<p>查看某次commit<code>内容</code></p>
+<pre><code>git show {commit_id}
+</code></pre>
+<p>合并单次commit</p>
+<pre><code>git cherry-pick {commit_id}
+</code></pre>
+<p>撤销特定commit 顺序  从新到旧</p>
+<pre><code>git revert {最新commitId} {第二commitId} {第三commitId}
+</code></pre>
+<p>推送本地所有tag</p>
+<pre><code>git push origin --tags
+</code></pre>
+<p>分支合并</p>
+<pre><code>git merge [branch_name]
+</code></pre>
+<p>撤销本地特定文件的修改</p>
+<pre><code>git checkout [file_name]
+</code></pre>
+<p>当线上git过大时候 git pull 无法拉去 可以采用下边指令</p>
+<pre><code>git pull origin test
+</code></pre>
+<p>删除git空目录</p>
+<pre><code>git clean -fd
+</code></pre>
+<p>git 撤销新的未添加到暂存区的文件</p>
+<pre><code>git clean -d -fx
+</code></pre>
+<p>查看git命令历史记录</p>
+<pre><code>git reflog
+</code></pre>
+<p>撤销git merge(未commit解决冲突前)</p>
+<pre><code>git reset --hard HEAD
+</code></pre>
+<p>&nbsp;</p>
+</body>
+</html>

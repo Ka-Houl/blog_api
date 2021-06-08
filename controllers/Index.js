@@ -3,16 +3,16 @@ const { getView, addView, findView } = require('../services/View'),
   { API } = require('../config/error_config')
 
 class Index {
-  async index(ctx, next) {
-    console.log('11111111111')
+  // async index(ctx, next) {
+  //   console.log('11111111111')
 
-    //在页面中渲染session信息
-    ctx.body = {
-      session: 123123123
-    }
+  //   //在页面中渲染session信息
+  //   ctx.body = {
+  //     session: 123123123
+  //   }
 
-    // await ctx.render('index2')  //渲染idnex.ejs
-  }
+  //   // await ctx.render('index2')  //渲染idnex.ejs
+  // }
   async getViewsNum(ctx, next) {
     console.log('11111111111')
     //在页面中渲染session信息

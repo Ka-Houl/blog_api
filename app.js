@@ -5,7 +5,7 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-const mount = require('koa-mount');
+const mount = require('koa-mount')
 
 const { join, extname } = require('path')
 
@@ -52,6 +52,31 @@ app.use(
   })
 )
 
+app.keys = sessionInfo.keys //加密cookie的key
+
+//使用session中间件
+// app.use(
+//   session({
+//     key: sessionInfo.name, // cookie name
+//     prefix: sessionInfo.prefix, //redis key前缀
+//     cookie: cookieInfo
+//     // store: redisStore(redisInfo)
+//   })
+// )
+
+// logger
+app.use(async (ctx, next) => {
+  const start = new Date()
+  await next()
+  const ms = new Date() - start
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+})
+
+// routes   //注册路由
+app.use(indexRouter.routes(), indexRouter.allowedMethods())
+
+const root = join(__dirname, 'dist')
+
 let render
 app.use(async (ctx, next) => {
   // console.log('ctx--------', ctx)
@@ -68,7 +93,7 @@ app.use(async (ctx, next) => {
   // global._navigatorLang = parseNavLang(ctx);
 
   const ext = extname(ctx.request.path)
-  console.log('ctx.request.url', ctx.request.url)
+  // console.log('ctx.request.url', ctx.request)
   console.log('ext111', ext)
   // await next()
   // return
@@ -92,36 +117,13 @@ app.use(async (ctx, next) => {
     await next()
   }
 })
-const root = join(__dirname, 'dist');
 
 /**
  *  注意这里的静态目录设置，需要和umi打包出来的目录是同一个
  *  这里最好是用nginx配置静态目录，如果是用cdn方式部署，这里可以忽略
  *
  */
-app.use(mount('/dist', require('koa-static')(root)));
-app.keys = sessionInfo.keys //加密cookie的key
-
-//使用session中间件
-app.use(
-  session({
-    key: sessionInfo.name, // cookie name
-    prefix: sessionInfo.prefix, //redis key前缀
-    cookie: cookieInfo
-    // store: redisStore(redisInfo)
-  })
-)
-
-// logger
-app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
-
-// routes   //注册路由
-app.use(indexRouter.routes(), indexRouter.allowedMethods())
+app.use(mount('/', require('koa-static')(root)))
 
 // error-handling
 app.on('error', (err, ctx) => {
